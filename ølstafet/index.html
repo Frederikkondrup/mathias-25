@@ -1,0 +1,1195 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dagens ret til Mathias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredericka+the+Great&family=Gloock&family=Jost:wght@400;500;600&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --tavle: #1b2420;
+    --tavle-lys: #26312c;
+    --tavle-dyb: #121815;
+    --kridt: #ece9e0;
+    --kridt-svag: #a9b2ac;
+    --kridt-streg: rgba(236, 233, 224, .5);
+    --kridt-linje: rgba(236, 233, 224, .16);
+    --gul: #f2d37e;
+    --groen: #b9d78f;
+    --rosa: #efa7a2;
+    --trae-lys: #93683f;
+    --trae: #6f4a2e;
+    --trae-moerk: #472d1a;
+    --papir: #fcfaf5;
+    --papir-kant: #e2dbcb;
+    --blaek: #1e2a48;
+    --blaek-svag: #5b6581;
+    --bordeaux: #7c2334;
+    --f-tavle: "Fredericka the Great", "Chalkboard SE", "Marker Felt", cursive;
+    --f-haand: "Caveat", "Bradley Hand", "Segoe Print", cursive;
+    --f-ui: "Jost", "Avenir Next", "Futura", "Century Gothic", system-ui, sans-serif;
+    --f-menu: "Gloock", "Didot", "Bodoni 72", Georgia, serif;
+    --ramme: clamp(8px, 1.6vw, 16px);
+    --haandkant: 255px 18px 225px 18px / 18px 225px 18px 255px;
+    --stoej: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --kridtmaske: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='k'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 1.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23k)'/%3E%3C/svg%3E");
+  }
+
+  [hidden] { display: none !important; }
+  html { background: var(--tavle-dyb); }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--tavle);
+    background-image:
+      radial-gradient(60% 38% at 18% 12%, rgba(236, 233, 224, .07), transparent 72%),
+      radial-gradient(48% 32% at 88% 48%, rgba(236, 233, 224, .05), transparent 70%),
+      radial-gradient(70% 30% at 35% 96%, rgba(236, 233, 224, .045), transparent 70%),
+      var(--stoej);
+    color: var(--kridt);
+    font: 400 1.0625rem/1.55 var(--f-ui);
+    padding-inline: calc(var(--ramme) + 18px);
+    padding-block: calc(var(--ramme) + 18px) calc(var(--ramme) + 40px);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .ramme {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    border: var(--ramme) solid var(--trae);
+    border-image: linear-gradient(160deg, var(--trae-lys), var(--trae) 22%, var(--trae-moerk) 46%, var(--trae) 68%, var(--trae-lys) 86%, var(--trae-moerk)) 1;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .55), inset 0 0 32px rgba(0, 0, 0, .55);
+  }
+
+  .side {
+    max-width: 36rem;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  p { margin: 0; }
+  .broed { max-width: 34rem; }
+
+  .eyebrow {
+    font: 500 .76rem/1.2 var(--f-ui);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--kridt-svag);
+  }
+
+  .kridt {
+    font-family: var(--f-tavle);
+    font-weight: 400;
+    line-height: 1.05;
+    margin: 0;
+    text-wrap: balance;
+    -webkit-mask-image: var(--kridtmaske);
+    mask-image: var(--kridtmaske);
+    -webkit-mask-size: 160px;
+    mask-size: 160px;
+  }
+  h2.kridt { font-size: clamp(2.1rem, 8vw, 2.9rem); }
+  [tabindex="-1"]:focus { outline: none; }
+
+  .haand {
+    font: 700 1.65rem/1.2 var(--f-haand);
+    color: var(--gul);
+  }
+
+  /* Menu: retterne som på en bistrotavle */
+  .top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .35rem;
+    text-align: center;
+  }
+  .menu ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font: 700 1.4rem/1.3 var(--f-haand);
+  }
+  .menu li + li::before {
+    content: "·";
+    color: var(--kridt-svag);
+    padding-inline: .5rem;
+  }
+  .menu button {
+    background: none;
+    border: 0;
+    padding: .05rem .15rem .2rem;
+    color: var(--kridt);
+    font: inherit;
+    cursor: pointer;
+  }
+  .menu button:disabled { color: var(--kridt-svag); opacity: .5; cursor: default; }
+  .menu button.spist {
+    color: var(--kridt-svag);
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--kridt-streg);
+  }
+  .menu button[aria-current="step"] {
+    color: var(--gul);
+    text-decoration: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'%3E%3Cpath d='M2 5 C 20 2, 40 7, 60 4 S 90 3, 98 5' fill='none' stroke='%23f2d37e' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") bottom / 100% 7px no-repeat;
+  }
+
+  .trin {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    animation: ind .5s ease both;
+  }
+  @keyframes ind { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  /* Knapper tegnet med kridt */
+  .knap {
+    align-self: flex-start;
+    font: 700 1.5rem/1 var(--f-haand);
+    color: var(--kridt);
+    background: transparent;
+    border: 2px solid var(--kridt-streg);
+    border-radius: var(--haandkant);
+    padding: .6rem 1.35rem .7rem;
+    cursor: pointer;
+    transition: background-color .2s, border-color .2s, transform .15s;
+  }
+  .knap:hover { background-color: rgba(236, 233, 224, .06); border-color: var(--kridt); }
+  .knap:active { transform: translateY(1px); }
+  .knap:disabled { opacity: .5; cursor: default; }
+  .knap.gul { color: var(--gul); border-color: var(--gul); }
+  :focus-visible { outline: 2px dashed var(--gul); outline-offset: 4px; }
+
+  .lille-knap {
+    font: 500 .74rem/1 var(--f-ui);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--kridt-svag);
+    background: none;
+    border: 1px solid rgba(236, 233, 224, .28);
+    border-radius: 999px;
+    padding: .42rem .75rem;
+    cursor: pointer;
+  }
+  .lille-knap:hover { color: var(--kridt); border-color: var(--kridt-streg); }
+
+  /* Velkomst */
+  .trin-velkomst { align-items: center; text-align: center; gap: 1.3rem; padding-top: .5rem; }
+  .trin-velkomst .knap { align-self: center; }
+  .helt {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: .1em .45em;
+    font-size: clamp(3.1rem, 14vw, 5.4rem);
+    font-weight: 400;
+  }
+  .alder { position: relative; color: var(--gul); padding-inline: .12em; }
+  .cirkel {
+    position: absolute;
+    inset: -22% -34% -20% -30%;
+    width: 164%;
+    height: 142%;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .cirkel path {
+    fill: none;
+    stroke: var(--gul);
+    stroke-width: 3;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    opacity: .85;
+    animation: tegn 1.1s .5s ease-out both;
+  }
+  @keyframes tegn { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+  /* Forret: rebussen */
+  .rebus { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .ord {
+    display: grid;
+    gap: .7rem;
+    padding-block: 1.15rem;
+    border-top: 1px dashed var(--kridt-linje);
+  }
+  .ord:last-child { border-bottom: 1px dashed var(--kridt-linje); }
+  .billeder { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem; }
+  .gruppe { display: inline-flex; align-items: center; gap: .5rem; }
+  .emoji {
+    font-size: 2.75rem;
+    line-height: 1;
+    filter: saturate(.85) drop-shadow(0 1px 0 rgba(0, 0, 0, .35));
+  }
+  .op { font: 700 2rem/1 var(--f-haand); white-space: nowrap; }
+  .svar { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem .9rem; }
+  .nr {
+    font: 500 .72rem/1 var(--f-ui);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--kridt-svag);
+  }
+  .felt {
+    width: calc(var(--n) * 1.12em + .8em);
+    max-width: 100%;
+    font: 600 1.2rem/1 var(--f-ui);
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--kridt);
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid var(--kridt-streg);
+    border-radius: 0;
+    padding: .35rem .1rem .3rem;
+    caret-color: var(--gul);
+  }
+  .felt::placeholder { color: rgba(236, 233, 224, .26); }
+  .felt:focus, .felt:focus-visible { outline: none; border-bottom-color: var(--gul); }
+  .status { font: 700 1.35rem/1 var(--f-haand); }
+  .ord.loest .felt { color: var(--groen); border-bottom-color: var(--groen); }
+  .ord.loest .status { color: var(--groen); }
+  .ord.forkert .felt { border-bottom-color: var(--rosa); animation: ryst .35s; }
+  .ord.forkert .status { color: var(--rosa); }
+  .hinttekst { font: 500 1.4rem/1.25 var(--f-haand); color: var(--gul); }
+  .hinttekst:empty { display: none; }
+
+  .loesning { display: grid; gap: 1rem; padding-top: .4rem; }
+  .budskab {
+    font-size: clamp(1.9rem, 7.6vw, 2.7rem);
+    color: var(--gul);
+    animation: skriv 1.8s .2s steps(24) both;
+  }
+  @keyframes skriv { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+  /* Hovedret: kodelåsen */
+  .gemmested { display: grid; gap: .6rem; justify-items: start; }
+  .laas {
+    align-self: center;
+    width: min(100%, 21rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: .6rem .2rem;
+  }
+  .boejle {
+    display: block;
+    width: 58%;
+    margin-bottom: -3px;
+    color: var(--kridt-streg);
+    transition: transform .55s cubic-bezier(.3, 1.6, .5, 1), color .3s;
+  }
+  .laas-krop {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem .9rem 1.1rem;
+    border: 2.5px solid var(--kridt-streg);
+    border-radius: 26px 22px 30px 20px / 22px 28px 20px 26px;
+    background: rgba(18, 24, 21, .45);
+    transition: border-color .3s;
+  }
+  .hjul-raekke { display: flex; justify-content: center; gap: clamp(.35rem, 2.4vw, .8rem); }
+  .hjul { display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+  .pil {
+    width: 3.2rem;
+    height: 2.1rem;
+    display: grid;
+    place-items: center;
+    background: none;
+    border: 0;
+    color: var(--kridt-svag);
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .pil:hover { color: var(--kridt); background: rgba(236, 233, 224, .06); }
+  .pil svg { width: 1.1rem; height: 1.1rem; }
+  .tal {
+    width: 3.3rem;
+    height: 6.3rem;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 2px solid var(--kridt-linje);
+    background: linear-gradient(var(--tavle-dyb), var(--tavle-lys) 50%, var(--tavle-dyb));
+    touch-action: none;
+    cursor: ns-resize;
+    -webkit-mask-image: linear-gradient(transparent, #000 28%, #000 72%, transparent);
+    mask-image: linear-gradient(transparent, #000 28%, #000 72%, transparent);
+  }
+  .stak { height: 100%; display: flex; flex-direction: column; }
+  .stak span {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    font: 500 1.2rem/1 var(--f-ui);
+    font-variant-numeric: tabular-nums;
+    color: var(--kridt-svag);
+    opacity: .5;
+  }
+  .stak span:nth-child(2) { font-size: 2.05rem; font-weight: 600; color: var(--kridt); opacity: 1; }
+  .tal.rul-ned .stak { animation: rulNed .22s ease-out; }
+  .tal.rul-op .stak { animation: rulOp .22s ease-out; }
+  @keyframes rulNed { from { transform: translateY(-33.333%); } to { transform: none; } }
+  @keyframes rulOp { from { transform: translateY(33.333%); } to { transform: none; } }
+  .laas.aaben .boejle { transform: translateY(-16px); color: var(--groen); }
+  .laas.aaben .laas-krop { border-color: var(--groen); }
+  .laas.ryst { animation: ryst .45s; }
+  .laas-knapper { display: flex; justify-content: center; }
+  .laas-knapper .knap { align-self: center; }
+  .besked { min-height: 1.6em; text-align: center; font: 700 1.45rem/1.2 var(--f-haand); }
+  .besked.fejl { color: var(--rosa); }
+  .besked.god { color: var(--groen); }
+  .laas-hint { font: 500 1.35rem/1.25 var(--f-haand); color: var(--gul); text-align: center; }
+  .laas-hint:empty { display: none; }
+
+  @keyframes ryst {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(7px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(3px); }
+  }
+
+  /* Dessert: peberkværnen */
+  .kvaern-omraade { display: flex; flex-direction: column; gap: 1rem; }
+  .kvaern-felt { position: relative; height: 380px; }
+  .kvaern-felt::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    width: min(250px, 72%);
+    height: 36px;
+    transform: translateX(-50%);
+    border: 2px solid var(--kridt-streg);
+    border-radius: 50%;
+    z-index: 0;
+  }
+  #peber { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+  .kvaern {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    z-index: 2;
+    width: 108px;
+    height: 270px;
+    padding: 0;
+    transform: translateX(-50%);
+    background: none;
+    border: 0;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .kvaern:active { cursor: grabbing; }
+  .kvaern svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 25%;
+    filter: drop-shadow(0 10px 12px rgba(0, 0, 0, .45));
+  }
+  .maaler-linje { display: flex; align-items: center; gap: .8rem; }
+  .maaler {
+    flex: 1;
+    height: 12px;
+    border: 2px solid var(--kridt-streg);
+    border-radius: 12px 8px 14px 6px / 8px 12px 6px 14px;
+    overflow: hidden;
+  }
+  .maaler span { display: block; height: 100%; width: 0; background: var(--gul); opacity: .85; transition: width .15s; }
+
+  .gavekort {
+    position: relative;
+    display: grid;
+    gap: .85rem;
+    margin-top: .4rem;
+    padding: 2.1rem 1.7rem 1.9rem;
+    background: var(--papir);
+    color: var(--blaek);
+    border-radius: 3px;
+    outline: 1px solid var(--papir-kant);
+    outline-offset: -9px;
+    box-shadow: 0 20px 42px rgba(0, 0, 0, .5), 0 2px 0 rgba(0, 0, 0, .25);
+    transform: rotate(-1.2deg);
+    animation: laeg .9s cubic-bezier(.2, .8, .2, 1) both;
+  }
+  .gavekort.lagt { animation: none; }
+  .gavekort::before {
+    content: "";
+    position: absolute;
+    inset: 13px;
+    border: 1px solid var(--papir-kant);
+    pointer-events: none;
+  }
+  @keyframes laeg {
+    from { opacity: 0; transform: translateY(46px) rotate(5deg) scale(.95); }
+    to { opacity: 1; transform: rotate(-1.2deg); }
+  }
+  .gk-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font: 500 .7rem/1 var(--f-ui);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--blaek-svag);
+  }
+  .gk-sted {
+    margin-top: .6rem;
+    text-align: center;
+    font: 500 .86rem/1.2 var(--f-ui);
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--bordeaux);
+  }
+  .gk-ret {
+    margin: 0;
+    text-align: center;
+    font: 400 clamp(2rem, 8.4vw, 2.75rem)/1.02 var(--f-menu);
+    text-wrap: balance;
+  }
+  .gk-under { text-align: center; font: 400 1.05rem/1.3 var(--f-menu); color: var(--blaek-svag); }
+  .gk-linjer { margin: .5rem 0 0; display: grid; gap: .4rem; }
+  .gk-linjer div { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: .55rem; }
+  .gk-linjer div::after { content: ""; order: 2; border-bottom: 1.5px dotted var(--blaek-svag); opacity: .6; transform: translateY(-.28em); }
+  .gk-linjer dt { order: 1; font: 500 .76rem/1.2 var(--f-ui); letter-spacing: .14em; text-transform: uppercase; }
+  .gk-linjer dd { order: 3; margin: 0; font: 400 1.08rem/1.2 var(--f-menu); font-variant-numeric: tabular-nums; }
+  .gk-hilsen { margin-top: .5rem; font: 500 1.5rem/1.25 var(--f-haand); max-width: 26rem; }
+  .gk-fra { font: 400 .85rem/1.3 var(--f-ui); color: var(--blaek-svag); }
+  .gk-fra .sign { display: block; margin-top: .15rem; font: 700 2rem/1 var(--f-haand); color: var(--bordeaux); }
+  .gk-adresse {
+    margin-top: .6rem;
+    text-align: center;
+    font: 500 .7rem/1.4 var(--f-ui);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--blaek-svag);
+  }
+  .stempel {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 3.6rem;
+    transform: rotate(-13deg);
+    font: 600 1.05rem/1 var(--f-ui);
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--bordeaux);
+    border: 2.5px solid currentColor;
+    border-radius: 6px;
+    padding: .38rem .45rem .38rem .75rem;
+    opacity: .75;
+    -webkit-mask-image: var(--kridtmaske);
+    mask-image: var(--kridtmaske);
+    -webkit-mask-size: 110px;
+    mask-size: 110px;
+  }
+  .efter { display: grid; gap: .3rem; padding-top: .6rem; }
+
+  .fod { text-align: center; font-size: .82rem; color: var(--kridt-svag); }
+  .konfetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 55; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-delay: 0s !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="ramme" aria-hidden="true"></div>
+
+<div class="side">
+  <header class="top">
+    <p class="eyebrow">Dagens menu</p>
+    <nav class="menu" aria-label="Menuens retter">
+      <ol>
+        <li><button type="button">Velkomst</button></li>
+        <li><button type="button">Forret</button></li>
+        <li><button type="button">Hovedret</button></li>
+        <li><button type="button">Dessert</button></li>
+      </ol>
+    </nav>
+  </header>
+
+  <main>
+    <section class="trin trin-velkomst" id="trin-0">
+      <p class="eyebrow">Plat du jour · kun én gæst</p>
+      <h1 class="helt" tabindex="-1">
+        <span class="kridt">Mathias</span>
+        <span class="alder"><span class="kridt">25</span><svg class="cirkel" viewBox="0 0 200 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M20 58 C 14 26, 70 6, 118 10 C 168 14, 194 40, 188 64 C 182 92, 122 104, 72 98 C 30 93, 4 74, 16 50 C 24 34, 48 22, 78 17"/></svg></span>
+      </h1>
+      <p class="haand">Tillykke med fødselsdagen!</p>
+      <p class="broed">Dagens ret står ikke på tavlen endnu. Du skal selv finde frem til den, én ret ad gangen: først en rebus, så en gemt ingrediens og til sidst en kode.</p>
+      <button class="knap gul" type="button" data-gaa="1">Server forretten</button>
+    </section>
+
+    <section class="trin" id="trin-1" hidden>
+      <p class="eyebrow">Forret</p>
+      <h2 class="kridt" tabindex="-1">Tavlens rebus</h2>
+      <p class="broed">Fem ord. Hvert billede er et ord. Minus trækker bogstaver fra, plus lægger til, og H=N betyder, at H bliver byttet ud med N. Skriv ordene på linjerne.</p>
+      <ol class="rebus" id="rebus"></ol>
+      <div class="loesning" id="loesning" hidden>
+        <p class="eyebrow">Tavlen siger</p>
+        <p class="kridt budskab">Find peberen.<br>Postnummeret er koden.</p>
+        <button class="knap gul" type="button" data-gaa="2">Videre til hovedretten</button>
+      </div>
+    </section>
+
+    <section class="trin" id="trin-2" hidden>
+      <p class="eyebrow">Hovedret</p>
+      <h2 class="kridt" tabindex="-1">Find peberen</h2>
+      <p class="broed">Et sted i huset ligger en pose peberkorn og venter på dig. Find den. På posen står der, hvor peberen er pakket, og postnummeret er koden til desserten.</p>
+      <div class="gemmested" id="gemmested" hidden>
+        <button class="lille-knap" type="button" id="gemmested-knap">Hint til gemmestedet</button>
+        <p class="hinttekst" id="gemmested-tekst" aria-live="polite"></p>
+      </div>
+
+      <div class="laas" id="laas">
+        <svg class="boejle" viewBox="0 0 200 96" aria-hidden="true"><path d="M44 96 V56 C 44 22, 72 6, 100 6 C 128 6, 156 22, 156 56 V96" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round"/></svg>
+        <div class="laas-krop">
+          <div class="hjul-raekke" role="group" aria-label="Kode på fire cifre" id="hjul-raekke"></div>
+        </div>
+      </div>
+      <p class="besked" id="besked" aria-live="polite"></p>
+      <p class="laas-hint" id="laas-hint" aria-live="polite"></p>
+      <div class="laas-knapper"><button class="knap gul" type="button" id="laas-op">Lås op</button></div>
+    </section>
+
+    <section class="trin" id="trin-3" hidden>
+      <p class="eyebrow">Dessert</p>
+      <h2 class="kridt" tabindex="-1" id="dessert-titel">Kværn peberen</h2>
+      <div class="kvaern-omraade" id="kvaern-omraade">
+        <p class="broed">Drej kværnen, til gaven kommer frem. Træk frem og tilbage hen over den, eller hold fingeren på den.</p>
+        <div class="kvaern-felt" id="kvaern-felt">
+          <canvas id="peber" aria-hidden="true"></canvas>
+          <button class="kvaern" type="button" id="kvaern" aria-label="Kværn peberen. Hold nede, træk frem og tilbage, eller tryk på mellemrum.">
+            <svg viewBox="0 0 120 300" aria-hidden="true">
+              <defs>
+                <linearGradient id="trae" x1="0" x2="1">
+                  <stop offset="0" stop-color="#34200f"/>
+                  <stop offset=".26" stop-color="#7a4f2e"/>
+                  <stop offset=".44" stop-color="#b08154"/>
+                  <stop offset=".62" stop-color="#7a4f2e"/>
+                  <stop offset="1" stop-color="#2b190c"/>
+                </linearGradient>
+                <linearGradient id="skygge" x1="0" x2="1">
+                  <stop offset="0" stop-color="#000" stop-opacity=".6"/>
+                  <stop offset=".42" stop-color="#fff" stop-opacity=".14"/>
+                  <stop offset="1" stop-color="#000" stop-opacity=".65"/>
+                </linearGradient>
+                <linearGradient id="messing" x1="0" x2="1">
+                  <stop offset="0" stop-color="#6a5022"/>
+                  <stop offset=".42" stop-color="#e6cb84"/>
+                  <stop offset="1" stop-color="#57411a"/>
+                </linearGradient>
+                <pattern id="riller" width="10" height="70" patternUnits="userSpaceOnUse">
+                  <rect width="10" height="70" fill="#8d5f38"/>
+                  <rect width="3.5" height="70" fill="#56371f"/>
+                </pattern>
+                <clipPath id="krone"><path d="M28 32 Q28 22 38 22 H82 Q92 22 92 32 V79 H28 Z"/></clipPath>
+              </defs>
+              <circle cx="60" cy="13" r="8.5" fill="url(#trae)"/>
+              <rect x="55" y="19" width="10" height="5" fill="#3d2513"/>
+              <g clip-path="url(#krone)">
+                <rect x="0" y="20" width="120" height="62" fill="url(#riller)"/>
+                <rect x="28" y="20" width="64" height="62" fill="url(#skygge)"/>
+              </g>
+              <rect x="30" y="78" width="60" height="7" rx="2" fill="url(#messing)"/>
+              <path d="M34 85 H86 C86 110 76 130 76 170 C76 215 90 240 90 262 H30 C30 240 44 215 44 170 C44 130 34 110 34 85 Z" fill="url(#trae)"/>
+              <rect x="24" y="262" width="72" height="18" rx="4" fill="url(#trae)"/>
+              <rect x="31" y="280" width="58" height="6" rx="2" fill="#26160a"/>
+            </svg>
+          </button>
+        </div>
+        <div class="maaler-linje">
+          <span class="eyebrow">Malet</span>
+          <div class="maaler" id="maaler" role="progressbar" aria-label="Malet peber" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="maaler-fyld"></span></div>
+        </div>
+      </div>
+      <article class="gavekort" id="gavekort" hidden></article>
+      <div class="efter" id="efter" hidden>
+        <p class="haand">Velbekomme, Mathias.</p>
+        <p class="broed">Tag et screenshot af gavekortet, eller kom tilbage hertil. Siden kan huske, at du har låst op.</p>
+      </div>
+    </section>
+  </main>
+
+  <p class="fod">Siden husker, hvor langt du er nået.</p>
+</div>
+
+<script>
+(() => {
+  document.documentElement.lang = 'da';
+
+  const OFFENTLIG = {"gemmested":""};
+  const LAAS = {"salt":"VxyTU7eR+SZg1TcSPS9BLA==","iv":"oxdUSJue30mOkQRC","iter":200000,"data":"AkiZwFDa5de0doqCALjM6Sq0Qf8JaN8IVN8OTJ8UtzmTqNVp/ppwkzu572Xp5yHmLItjknwqFoYRnw/gceEEypS3W0cfSXFHr0kjYvP24jDnkhLlKm/sqirbsV3NRGo+S4voswR7sUEOhQ6cHnppfKlHywxNhSeLLcPQYNaehtfhmdadDsGO+p4X7TESxD8IdnSjW6HIesGVDBnvpnyvcM+jon32rTqqa0mRdDrS6OtBrZahrSTwXEzSSPTUSsnDRz1vT8OC3KThtBKlxoTxdv0sT14kD5CRyA10wVqRXQGutd/jU4s9e2d30kSi1tntFpVCyitW7ewip/bYYAasLoFT7Bk8hjRcTmWK2MPgGCGWPovdsIKbkqovaVBFbLNhUb43TQfgCklfQUv/67DUHsu2/Z4L8vktMPZF2Bbo3vWQKWkS5QOprYs2TTIsX6wOeG5l26airsBxL0YJNv/iFTKd2ecU+MYcmJ78XZ9YjpVh7QIIZ7ZdmfLQndBFflolnucFh8hM5hpHdbMJeHu5LUdE+QpOnXYm3C0OMSsY5pVU27uRLzOGYpouGbAVKZ8Rpz+9EEwPN4PVQy9uJbL6SoY="};
+
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const rolig = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Nøglen følger krypteringen, så en ny udgave af siden starter forfra.
+  const NOEGLE = 'dagens-ret-' + LAAS.salt.slice(0, 10);
+  const tilstand = { trin: 0, aaben: 0, loest: {}, hjulp: {}, kode: null, malet: false };
+  try { Object.assign(tilstand, JSON.parse(localStorage.getItem(NOEGLE)) || {}); } catch (e) {}
+  const gem = () => { try { localStorage.setItem(NOEGLE, JSON.stringify(tilstand)); } catch (e) {} };
+
+  let gave = null;
+
+  /* ---------- Menu og trin ---------- */
+
+  const sektioner = $$('.trin');
+  const menuKnapper = $$('.menu button');
+
+  function opdaterMenu() {
+    menuKnapper.forEach((k, i) => {
+      k.disabled = i > tilstand.aaben;
+      k.classList.toggle('spist', i < tilstand.aaben || (i === 3 && tilstand.malet));
+      if (i === tilstand.trin) k.setAttribute('aria-current', 'step');
+      else k.removeAttribute('aria-current');
+    });
+  }
+
+  function visTrin(n, { rul = true, fokus = true } = {}) {
+    tilstand.trin = n;
+    tilstand.aaben = Math.max(tilstand.aaben, n);
+    sektioner.forEach((s, i) => { s.hidden = i !== n; });
+    opdaterMenu();
+    gem();
+    if (rul) window.scrollTo({ top: 0, behavior: rolig ? 'auto' : 'smooth' });
+    if (fokus) { const h = $('h1, h2', sektioner[n]); if (h) h.focus({ preventScroll: true }); }
+    if (n === 3) klarDessert();
+  }
+
+  menuKnapper.forEach((k, i) => k.addEventListener('click', () => visTrin(i)));
+  $$('[data-gaa]').forEach((k) => k.addEventListener('click', () => visTrin(Number(k.dataset.gaa))));
+
+  /* ---------- Forret: rebus ---------- */
+
+  const REBUS = [
+    { svar: 'FIND',
+      grupper: [{ e: '🐟', a: 'Fisk', ops: ['−SK', '+ND'] }],
+      hints: ['Billedet er en fisk.', 'FISK minus SK giver FI. Sæt ND på.'] },
+    { svar: 'PEBEREN',
+      grupper: [{ e: '🫑', a: 'Peberfrugt', ops: ['−FRUGT', '+EN'] }],
+      hints: ['Det er ikke en chili. Det er en peberfrugt.', 'PEBERFRUGT minus FRUGT giver PEBER. Sæt EN på.'] },
+    { svar: 'POSTNUMMERET',
+      grupper: [
+        { e: '📮', a: 'Postkasse', ops: ['−KASSE'] },
+        { e: '🦞', a: 'Hummer', ops: ['H=N'] },
+        { e: '👽', a: 'Rumvæsen', ops: [] },
+      ],
+      hints: ['Tre billeder: en postkasse, en hummer og filmhistoriens mest berømte rumvæsen fra 1982.', 'POST + NUMMER + ET'] },
+    { svar: 'ER',
+      grupper: [{ e: '🐅', a: 'Tiger', ops: ['−TIG'] }],
+      hints: ['Det stribede dyr er en tiger.', 'TIGER minus TIG giver ER.'] },
+    { svar: 'KODEN',
+      grupper: [{ e: '🐄', a: 'Ko', ops: ['+DEN'] }],
+      hints: ['Dyret siger muh.', 'KO + DEN'] },
+  ];
+
+  const liste = $('#rebus');
+  REBUS.forEach((r, i) => {
+    const li = document.createElement('li');
+    li.className = 'ord';
+    const billeder = r.grupper.map((g) =>
+      `<span class="gruppe"><span class="emoji" role="img" aria-label="${g.a}">${g.e}</span>` +
+      g.ops.map((o) => `<span class="op">${o}</span>`).join('') + '</span>').join('');
+    li.innerHTML =
+      `<div class="billeder">${billeder}</div>` +
+      `<div class="svar">` +
+        `<label class="nr" for="ord-${i}">Ord ${i + 1}</label>` +
+        `<input class="felt" id="ord-${i}" style="--n:${r.svar.length}" maxlength="${r.svar.length}" placeholder="${'_'.repeat(r.svar.length)}" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" aria-describedby="hint-${i}">` +
+        `<span class="status" aria-live="polite"></span>` +
+        `<button class="lille-knap hint-knap" type="button">Hint</button>` +
+      `</div>` +
+      `<p class="hinttekst" id="hint-${i}" aria-live="polite"></p>`;
+    liste.append(li);
+
+    const felt = $('.felt', li), status = $('.status', li), hintKnap = $('.hint-knap', li), hintTekst = $('.hinttekst', li);
+
+    felt.addEventListener('input', () => {
+      const v = felt.value.toUpperCase().replace(/[^A-ZÆØÅ]/g, '');
+      if (v !== felt.value) felt.value = v;
+      li.classList.remove('forkert');
+      status.textContent = '';
+      if (v === r.svar) loes(i, false);
+      else if (v.length >= r.svar.length) {
+        void li.offsetWidth;
+        li.classList.add('forkert');
+        status.textContent = 'Ikke helt';
+      }
+    });
+
+    hintKnap.addEventListener('click', () => {
+      const brugt = tilstand.hjulp[i] || 0;
+      if (brugt < r.hints.length) {
+        tilstand.hjulp[i] = brugt + 1;
+        visHint(i);
+        gem();
+      } else {
+        loes(i, true);
+      }
+    });
+  });
+
+  function visHint(i) {
+    const li = liste.children[i], r = REBUS[i], brugt = tilstand.hjulp[i] || 0;
+    if (!brugt) return;
+    $('.hinttekst', li).textContent = r.hints[brugt - 1];
+    $('.hint-knap', li).textContent = brugt < r.hints.length ? 'Et hint mere' : 'Vis ordet';
+  }
+
+  function loes(i, hjulpet, stille) {
+    const li = liste.children[i], felt = $('.felt', li);
+    felt.value = REBUS[i].svar;
+    felt.readOnly = true;
+    li.classList.remove('forkert');
+    li.classList.add('loest');
+    $('.status', li).textContent = hjulpet ? '✓ med hjælp' : '✓';
+    $('.hint-knap', li).hidden = true;
+    if (!tilstand.loest[i]) tilstand.loest[i] = hjulpet ? 'hjulp' : 'selv';
+    const antal = Object.keys(tilstand.loest).length;
+    if (antal === REBUS.length) {
+      tilstand.aaben = Math.max(tilstand.aaben, 2);
+      $('#loesning').hidden = false;
+      opdaterMenu();
+      if (!stille) $('#loesning').scrollIntoView({ behavior: rolig ? 'auto' : 'smooth', block: 'center' });
+    } else if (!stille && !hjulpet) {
+      const naeste = REBUS.findIndex((_, j) => !tilstand.loest[j]);
+      if (naeste > -1) $('.felt', liste.children[naeste]).focus({ preventScroll: true });
+    }
+    if (!stille) gem();
+  }
+
+  /* ---------- Hovedret: kodelås ---------- */
+
+  if (OFFENTLIG.gemmested) {
+    $('#gemmested').hidden = false;
+    $('#gemmested-knap').addEventListener('click', () => {
+      $('#gemmested-tekst').textContent = OFFENTLIG.gemmested;
+      $('#gemmested-knap').hidden = true;
+    });
+  }
+
+  const PIL_OP = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 13 L10 6 L16 13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const PIL_NED = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 7 L10 14 L16 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  const cifre = [0, 0, 0, 0];
+  const raekke = $('#hjul-raekke');
+  const tal = cifre.map((_, i) => {
+    const hjul = document.createElement('div');
+    hjul.className = 'hjul';
+    hjul.innerHTML =
+      `<button class="pil" type="button" aria-label="Ciffer ${i + 1} op">${PIL_OP}</button>` +
+      `<div class="tal" tabindex="0" role="spinbutton" aria-label="Ciffer ${i + 1}" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0"><div class="stak"><span>1</span><span>0</span><span>9</span></div></div>` +
+      `<button class="pil" type="button" aria-label="Ciffer ${i + 1} ned">${PIL_NED}</button>`;
+    raekke.append(hjul);
+    const [op, ned] = $$('.pil', hjul);
+    const t = $('.tal', hjul);
+    op.addEventListener('click', () => skift(i, 1));
+    ned.addEventListener('click', () => skift(i, -1));
+
+    let startY = null;
+    t.addEventListener('pointerdown', (e) => { startY = e.clientY; t.setPointerCapture(e.pointerId); });
+    t.addEventListener('pointermove', (e) => {
+      if (startY === null) return;
+      const dy = e.clientY - startY;
+      if (Math.abs(dy) > 22) { skift(i, dy > 0 ? 1 : -1); startY = e.clientY; }
+    });
+    const slip = () => { startY = null; };
+    t.addEventListener('pointerup', slip);
+    t.addEventListener('pointercancel', slip);
+
+    t.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp') { e.preventDefault(); skift(i, 1); }
+      else if (e.key === 'ArrowDown') { e.preventDefault(); skift(i, -1); }
+      else if (/^[0-9]$/.test(e.key)) {
+        e.preventDefault();
+        saet(i, Number(e.key));
+        if (i < 3) tal[i + 1].focus();
+      }
+      else if (e.key === 'Backspace' && i > 0) { e.preventDefault(); tal[i - 1].focus(); }
+      else if (e.key === 'Enter') { e.preventDefault(); laasOp(); }
+    });
+    return t;
+  });
+
+  function tegnHjul(i, retning) {
+    const t = tal[i], d = cifre[i], [op, nu, ned] = $$('span', t);
+    op.textContent = (d + 1) % 10;
+    nu.textContent = d;
+    ned.textContent = (d + 9) % 10;
+    t.setAttribute('aria-valuenow', d);
+    if (retning && !rolig) {
+      t.classList.remove('rul-ned', 'rul-op');
+      void t.offsetWidth;
+      t.classList.add(retning > 0 ? 'rul-ned' : 'rul-op');
+    }
+  }
+  function skift(i, delta) {
+    cifre[i] = (cifre[i] + delta + 10) % 10;
+    tegnHjul(i, delta);
+    ryd();
+  }
+  function saet(i, v) {
+    const retning = v === cifre[i] ? 0 : 1;
+    cifre[i] = v;
+    tegnHjul(i, retning);
+    ryd();
+  }
+
+  const laas = $('#laas'), besked = $('#besked'), laasHint = $('#laas-hint'), laasKnap = $('#laas-op');
+  function ryd() {
+    if (!laas.classList.contains('aaben')) { besked.textContent = ''; besked.className = 'besked'; }
+  }
+  function sig(tekst, type) { besked.textContent = tekst; besked.className = 'besked' + (type ? ' ' + type : ''); }
+
+  const FORKERT = [
+    'Forkert. Tjeneren ryster på hovedet.',
+    'Nej. Køkkenet sender den retur.',
+    'Ikke den. Smag til, og prøv igen.',
+    'Den kode står ikke på posen.',
+    'Forkert. Peberen lyver ikke.',
+  ];
+  let forsoeg = 0, travl = false;
+
+  async function laasOp() {
+    if (travl || laas.classList.contains('aaben')) return;
+    travl = true;
+    laasKnap.disabled = true;
+    sig('Smager til …', '');
+    const kode = cifre.join('');
+    let resultat = null, fejl = null;
+    try { resultat = await dekrypter(kode); } catch (e) { fejl = e; }
+    travl = false;
+    laasKnap.disabled = false;
+
+    if (resultat) {
+      gave = resultat;
+      tilstand.kode = kode;
+      tilstand.aaben = 3;
+      gem();
+      laas.classList.add('aaben');
+      laasHint.textContent = '';
+      sig('Klik. Desserten er klar.', 'god');
+      opdaterMenu();
+      setTimeout(() => visTrin(3), rolig ? 300 : 1200);
+      return;
+    }
+    if (fejl && fejl.message === 'ingen-krypto') {
+      sig('Låsen virker kun, når siden er åbnet via et https-link.', 'fejl');
+      return;
+    }
+    forsoeg += 1;
+    laas.classList.remove('ryst');
+    void laas.offsetWidth;
+    laas.classList.add('ryst');
+    sig(FORKERT[(forsoeg - 1) % FORKERT.length], 'fejl');
+    if (forsoeg === 3) laasHint.textContent = 'Hint: Kig efter hvem der har pakket peberen. Deres adresse står på posen, og postnummeret er de fire cifre foran bynavnet.';
+    if (forsoeg === 6) laasHint.textContent = 'Hint: Står der flere adresser, så prøv den ved ”Pakket af”, ”Pakket for” eller ”Produceret af”.';
+  }
+  laasKnap.addEventListener('click', laasOp);
+
+  const fraB64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+  async function dekrypter(kode) {
+    if (!(window.crypto && crypto.subtle)) throw new Error('ingen-krypto');
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(kode), 'PBKDF2', false, ['deriveKey']);
+    const noegle = await crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt: fraB64(LAAS.salt), iterations: LAAS.iter, hash: 'SHA-256' },
+      base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+    const klar = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: fraB64(LAAS.iv) }, noegle, fraB64(LAAS.data));
+    return JSON.parse(new TextDecoder().decode(klar));
+  }
+
+  /* ---------- Dessert: kværn og gavekort ---------- */
+
+  function klarDessert() {
+    if (!gave) {
+      if (!tilstand.kode) { visTrin(2); return; }
+      dekrypter(tilstand.kode).then((g) => { gave = g; klarDessert(); }).catch(() => {
+        tilstand.kode = null;
+        tilstand.aaben = 2;
+        tilstand.malet = false;
+        visTrin(2);
+      });
+      return;
+    }
+    lavGavekort(gave);
+    if (tilstand.malet) visGavekort(false);
+    else startKvaern();
+  }
+
+  function lavGavekort(g) {
+    const kort = $('#gavekort');
+    const el = (tag, cls, tekst) => {
+      const e = document.createElement(tag);
+      if (cls) e.className = cls;
+      if (tekst != null) e.textContent = tekst;
+      return e;
+    };
+    const top = el('div', 'gk-top');
+    top.append(el('span', null, 'Gavekort'), el('span', null, g.bon));
+    const linjer = el('dl', 'gk-linjer');
+    g.linjer.forEach(([dt, dd]) => {
+      const raekke = el('div');
+      raekke.append(el('dt', null, dt), el('dd', null, dd));
+      linjer.append(raekke);
+    });
+    const fra = el('p', 'gk-fra', 'Kærlig hilsen');
+    fra.append(el('span', 'sign', g.fra));
+    kort.replaceChildren(
+      top,
+      el('p', 'gk-sted', g.sted),
+      el('h3', 'gk-ret', g.ret),
+      el('p', 'gk-under', g.undertitel),
+      linjer,
+      el('p', 'gk-hilsen', g.hilsen),
+      fra,
+      el('p', 'gk-adresse', g.adresse),
+      el('div', 'stempel', g.stempel),
+    );
+  }
+
+  function visGavekort(animer) {
+    $('#kvaern-omraade').hidden = true;
+    const kort = $('#gavekort');
+    kort.classList.toggle('lagt', !animer);
+    kort.hidden = false;
+    $('#efter').hidden = false;
+    $('#dessert-titel').textContent = 'Serveret';
+    opdaterMenu();
+    if (animer) {
+      kort.scrollIntoView({ behavior: rolig ? 'auto' : 'smooth', block: 'center' });
+      if (!rolig) konfetti();
+    }
+  }
+
+  let kvaernStartet = false;
+  function startKvaern() {
+    if (kvaernStartet) return;
+    kvaernStartet = true;
+
+    const felt = $('#kvaern-felt'), cv = $('#peber'), ctx = cv.getContext('2d');
+    const knap = $('#kvaern'), svg = $('svg', knap), riller = $('#riller');
+    const maaler = $('#maaler'), fyld = $('#maaler-fyld');
+    const MAAL = 2200, BIN = 3, MAKS = 64;
+    const FARVER = ['#8b8076', '#6f655c', '#a79c8f', '#4f463f', '#d8cdbd', '#8b8076', '#6f655c', '#d9908a'];
+
+    let w = 0, h = 0, dpr = 1, bunke, bunkeCv, bunkeCtx, korn = [];
+    let fremskridt = 0, rot = 0, tilt = 0, holder = false, sidstX = 0, sidstY = 0, sidstBevaeg = 0, faerdig = false;
+
+    function maal() {
+      dpr = Math.min(2, window.devicePixelRatio || 1);
+      w = felt.clientWidth;
+      h = felt.clientHeight;
+      cv.width = Math.round(w * dpr);
+      cv.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      bunkeCv = document.createElement('canvas');
+      bunkeCv.width = cv.width;
+      bunkeCv.height = cv.height;
+      bunkeCtx = bunkeCv.getContext('2d');
+      bunkeCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      bunke = new Float32Array(Math.ceil(w / BIN) + 1);
+      korn = [];
+    }
+    maal();
+    window.addEventListener('resize', () => { if (!faerdig) maal(); });
+
+    const gulv = () => h - 30;
+    function mund() {
+      const f = felt.getBoundingClientRect(), r = svg.getBoundingClientRect();
+      return { x: r.left - f.left + r.width / 2, y: r.top - f.top + r.height * (286 / 300) };
+    }
+    function drys(n) {
+      if (rolig) return;
+      let antal = Math.floor(n);
+      if (Math.random() < n - antal) antal += 1;
+      const m = mund();
+      for (let k = 0; k < antal && korn.length < 700; k++) {
+        korn.push({
+          x: m.x + (Math.random() - .5) * 18,
+          y: m.y + Math.random() * 4,
+          vx: (Math.random() - .5) * .9,
+          vy: Math.random() * .6 + .3,
+          r: Math.random() * 1.5 + .9,
+          c: FARVER[(Math.random() * FARVER.length) | 0],
+        });
+      }
+    }
+    function tilfoej(n, dryss) {
+      if (faerdig) return;
+      fremskridt = Math.min(MAAL, fremskridt + n);
+      const pct = Math.round((fremskridt / MAAL) * 100);
+      fyld.style.width = pct + '%';
+      maaler.setAttribute('aria-valuenow', pct);
+      drys(dryss);
+    }
+    function skred(b) {
+      for (let j = Math.max(1, b - 4); j < Math.min(bunke.length - 1, b + 5); j++) {
+        for (const nb of [j - 1, j + 1]) {
+          const forskel = bunke[j] - bunke[nb];
+          if (forskel > 1.6) { const flyt = (forskel - 1.6) / 2; bunke[j] -= flyt; bunke[nb] += flyt; }
+        }
+      }
+    }
+
+    function tik() {
+      const nu = performance.now();
+      if (holder && nu - sidstBevaeg > 90) { tilfoej(9, 2.2); rot += 3.2; }
+      tilt *= .86;
+      riller.setAttribute('patternTransform', `translate(${((rot % 10) + 10) % 10} 0)`);
+      svg.style.transform = `rotate(${tilt.toFixed(2)}deg)`;
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.drawImage(bunkeCv, 0, 0, w, h);
+      for (let k = korn.length - 1; k >= 0; k--) {
+        const p = korn[k];
+        p.vy += .18;
+        p.x += p.vx;
+        p.y += p.vy;
+        const b = Math.max(0, Math.min(bunke.length - 1, (p.x / BIN) | 0));
+        const flade = gulv() - bunke[b];
+        if (p.y >= flade) {
+          bunkeCtx.fillStyle = p.c;
+          bunkeCtx.beginPath();
+          bunkeCtx.arc(p.x, flade, p.r, 0, Math.PI * 2);
+          bunkeCtx.fill();
+          bunke[b] = Math.min(MAKS, bunke[b] + p.r * .5);
+          skred(b);
+          korn.splice(k, 1);
+          continue;
+        }
+        ctx.fillStyle = p.c;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      if (fremskridt >= MAAL && korn.length === 0) {
+        faerdig = true;
+        holder = false;
+        tilstand.malet = true;
+        gem();
+        setTimeout(() => visGavekort(true), rolig ? 0 : 250);
+        return;
+      }
+      requestAnimationFrame(tik);
+    }
+
+    knap.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      holder = true;
+      sidstX = e.clientX;
+      sidstY = e.clientY;
+      sidstBevaeg = performance.now() - 200;
+      try { knap.setPointerCapture(e.pointerId); } catch (err) {}
+      if (rolig) tilfoej(MAAL / 3, 0);
+    });
+    knap.addEventListener('pointermove', (e) => {
+      if (!holder) return;
+      const dx = e.clientX - sidstX, dy = e.clientY - sidstY;
+      sidstX = e.clientX;
+      sidstY = e.clientY;
+      const afstand = Math.abs(dx) + Math.abs(dy) * .6;
+      if (afstand < 1) return;
+      sidstBevaeg = performance.now();
+      rot += (dx || dy) * .6;
+      tilt = Math.max(-5, Math.min(5, tilt + dx * .08));
+      tilfoej(afstand * 1.1, afstand / 3.5);
+    });
+    const slip = () => { holder = false; };
+    knap.addEventListener('pointerup', slip);
+    knap.addEventListener('pointercancel', slip);
+    knap.addEventListener('lostpointercapture', slip);
+    knap.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        rot += 18;
+        tilt = tilt > 0 ? -3 : 3;
+        tilfoej(rolig ? MAAL / 3 : 180, 40);
+      }
+    });
+    knap.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    requestAnimationFrame(tik);
+  }
+
+  function konfetti() {
+    const cv = document.createElement('canvas');
+    cv.className = 'konfetti';
+    cv.setAttribute('aria-hidden', 'true');
+    document.body.append(cv);
+    const dpr = Math.min(2, window.devicePixelRatio || 1), W = innerWidth, H = innerHeight;
+    cv.width = W * dpr;
+    cv.height = H * dpr;
+    const c = cv.getContext('2d');
+    c.scale(dpr, dpr);
+    // Firfarvet peber: sort, grøn, rosa og hvid.
+    const FARVER = ['#2b2420', '#2b2420', '#7f9c52', '#d9847e', '#efe5cf'];
+    const korn = Array.from({ length: 150 }, () => {
+      const vinkel = -Math.PI / 2 + (Math.random() - .5) * 1.9, fart = 7 + Math.random() * 9;
+      return {
+        x: W / 2 + (Math.random() - .5) * Math.min(W, 420) * .5,
+        y: H * .62,
+        vx: Math.cos(vinkel) * fart,
+        vy: Math.sin(vinkel) * fart,
+        r: 3 + Math.random() * 3.2,
+        c: FARVER[(Math.random() * FARVER.length) | 0],
+      };
+    });
+    const t0 = performance.now();
+    (function tegn(t) {
+      c.clearRect(0, 0, W, H);
+      let levende = 0;
+      for (const p of korn) {
+        p.vy += .28;
+        p.vx *= .99;
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.y > H + 20) continue;
+        levende++;
+        c.fillStyle = p.c;
+        c.beginPath();
+        c.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        c.fill();
+        c.fillStyle = 'rgba(255,255,255,.35)';
+        c.beginPath();
+        c.arc(p.x - p.r * .35, p.y - p.r * .35, p.r * .35, 0, Math.PI * 2);
+        c.fill();
+      }
+      if (levende && t - t0 < 5000) requestAnimationFrame(tegn);
+      else cv.remove();
+    })(t0);
+  }
+
+  /* ---------- Start ---------- */
+
+  Object.keys(tilstand.loest).forEach((i) => loes(Number(i), tilstand.loest[i] === 'hjulp', true));
+  Object.keys(tilstand.hjulp).forEach((i) => { if (!tilstand.loest[i]) visHint(Number(i)); });
+  visTrin(Math.min(tilstand.trin, tilstand.aaben), { rul: false, fokus: false });
+})();
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Bordet er reserveret</title>
+<title>Forkert bord</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fredericka+the+Great&family=Jost:wght@400;500;600&display=swap">
@@ -13,8 +13,8 @@
     --tavle: #1b2420;
     --kridt: #ece9e0;
     --kridt-svag: #a9b2ac;
-    --kridt-streg: rgba(236, 233, 224, .5);
     --gul: #f2d37e;
+    --rosa: #efa7a2;
     --trae: #6f4a2e;
     --trae-lys: #93683f;
     --trae-moerk: #472d1a;
@@ -34,44 +34,58 @@
     box-shadow: inset 0 0 32px rgba(0,0,0,.55);
   }
   main { width: min(100%, 32rem); display: grid; gap: 1.2rem; }
+  main[hidden] { display: none; }
   .eyebrow { margin: 0; font: 500 .76rem/1.2 "Jost", sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--kridt-svag); }
   h1 { margin: 0; font: 400 clamp(2.2rem, 9vw, 3rem)/1.05 "Fredericka the Great", "Chalkboard SE", cursive; text-wrap: balance; }
   p { margin: 0; }
-  .adresse { font: 600 .95rem/1.4 "Jost", sans-serif; color: var(--kridt-svag); word-break: break-all; }
-  .adresse span { color: var(--gul); letter-spacing: .1em; }
-  form { display: flex; flex-wrap: wrap; gap: .7rem; align-items: end; }
-  label { flex-basis: 100%; font: 500 .72rem/1 "Jost", sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--kridt-svag); }
-  input {
-    flex: 1 1 12rem; min-width: 0; font: 600 1.25rem/1 "Jost", sans-serif; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--kridt); background: transparent; border: 0; border-bottom: 2px solid var(--kridt-streg); border-radius: 0;
-    padding: .4rem .1rem; caret-color: var(--gul);
-  }
-  input:focus { outline: none; border-bottom-color: var(--gul); }
-  button {
-    font: 700 1.45rem/1 "Caveat", cursive; color: var(--gul); background: transparent; cursor: pointer;
+  .haand { font: 700 1.6rem/1.2 "Caveat", cursive; color: var(--rosa); word-break: break-word; }
+  a {
+    justify-self: start; font: 700 1.45rem/1 "Caveat", cursive; color: var(--gul); text-decoration: none;
     border: 2px solid var(--gul); border-radius: 255px 18px 225px 18px / 18px 225px 18px 255px; padding: .5rem 1.2rem .6rem;
   }
-  button:focus-visible { outline: 2px dashed var(--gul); outline-offset: 4px; }
+  a:focus-visible { outline: 2px dashed var(--gul); outline-offset: 4px; }
 </style>
 </head>
 <body>
-<main>
-  <p class="eyebrow">Dagens ret</p>
-  <h1>Bordet er reserveret</h1>
-  <p>Men kun til den, der kender kodeordet. Du finder det i krydsordet. Skriv det sidst i adressen:</p>
-  <p class="adresse">frederikkondrup.github.io/mathias-25/<span>_ _ _ _ _ _ _ _</span></p>
-  <form id="form">
-    <label for="kodeord">Eller skriv kodeordet her</label>
-    <input id="kodeord" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" placeholder="________">
-    <button type="submit">Gå til bordet</button>
-  </form>
+<main id="forkert" hidden>
+  <p class="eyebrow">Forkert bord</p>
+  <h1>Det kodeord står ikke på tavlen</h1>
+  <p class="haand" id="ord"></p>
+  <p>Tjek bogstaverne i de gule felter i krydsordet, og prøv igen.</p>
+  <a href="/mathias-25/">Prøv igen</a>
 </main>
 <script>
-  document.getElementById('form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const ord = document.getElementById('kodeord').value.trim().toLowerCase().replace(/\s+/g, '');
-    if (ord) location.href = '/mathias-25/' + encodeURIComponent(ord) + '/';
-  });
+(async () => {
+  const BASE = '/mathias-25/';
+  // SHA-256 af kodeordet, så det ikke står i klartekst her.
+  const NOEGLE = '9cd910678c2ffb5bdce8dc89ea33bf718b2b485913b63c602e8cb5c28bdc2f2c';
+
+  let sti = location.pathname;
+  try { sti = decodeURIComponent(sti); } catch (e) {}
+  const rest = sti.startsWith(BASE) ? sti.slice(BASE.length) : sti.replace(/^\/+/, '');
+  const skrevet = (rest.split('/').find(Boolean) || '').trim();
+
+  const normal = skrevet.normalize('NFC').toLowerCase()
+    .replace(/oe|ö/g, 'ø').replace(/ae|ä/g, 'æ').replace(/aa/g, 'å')
+    .replace(/[^a-zæøå]/g, '');
+  const kandidater = [...new Set([normal, normal.replace(/o/g, 'ø')])].filter(Boolean);
+
+  const hash = async (s) => {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+    return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+  };
+
+  if (window.crypto && crypto.subtle) {
+    for (const k of kandidater) {
+      if (await hash(k) === NOEGLE) {
+        location.replace(BASE + encodeURIComponent(k) + '/');
+        return;
+      }
+    }
+  }
+  if (skrevet) document.getElementById('ord').textContent = '»' + skrevet + '«';
+  document.getElementById('forkert').hidden = false;
+})();
 </script>
 </body>
 </html>
